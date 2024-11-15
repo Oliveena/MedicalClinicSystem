@@ -1,0 +1,10 @@
+Dr. John Doe, 45 years, General Practitioner
+Dr. Emily Smith, 34 years, Cardiologist
+Dr. Michael Brown, 50 years, Neurologist
+Dr. Sarah Johnson, 62 years, Dermatologist
+Dr. David Lee, 38 years, Orthopedic Surgeon
+Dr. Laura Harris, 55 years, Pediatrician
+Dr. James White, 38 years, Rheumatologist
+Dr. Angela Miller, 44 years, Psychiatrist
+Dr. Robert Garcia, 50 years, Surgeon
+Dr. Patricia Martinez, 62 years, Gynecologist
