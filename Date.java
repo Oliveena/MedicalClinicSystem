@@ -51,11 +51,7 @@ import static MCS.MainA.scanner;
 
         }
 
-        /**
-         * setter for birthday
-         *
-         * @param birthday
-         */
+
         public void setBirthday() {
             boolean validDay = false;
             System.out.println("Enter your Year of Birth: ");
