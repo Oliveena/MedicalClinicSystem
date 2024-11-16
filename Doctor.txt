@@ -1,10 +1,8 @@
-Dr. John Doe, 45 years, General Practitioner
-Dr. Emily Smith, 34 years, Cardiologist
-Dr. Michael Brown, 50 years, Neurologist
-Dr. Sarah Johnson, 62 years, Dermatologist
-Dr. David Lee, 38 years, Orthopedic Surgeon
-Dr. Laura Harris, 55 years, Pediatrician
-Dr. James White, 38 years, Rheumatologist
-Dr. Angela Miller, 44 years, Psychiatrist
-Dr. Robert Garcia, 50 years, Surgeon
-Dr. Patricia Martinez, 62 years, Gynecologist
+Genevieve Drapeau - Date of Birth: 06/06/1996 - Specialty: General Practitioner - PrescriberID: 02090
+My Linh Tu - Date of Birth: 06/06/1996 - Specialty: Obstetrician -  PrescriberID: 79552
+Nina Marie Benoit - Date of Birth: 06/06/1996 - Specialty: General Practitioner -  PrescriberID: 14318
+Anatole Nguegno - Date of Birth: 06/06/1996 - Specialty: Endocrinologist -  PrescriberID: 10002
+Gerald G Pearl - Date of Birth: 06/06/1996 - Specialty: General Surgery -  PrescriberID: 63321
+Tamara Yatsevska - Date of Birth: 06/06/1996 - Specialty: General Practitioner -  PrescriberID: 19460
+Jean-Francois - Date of Birth: 06/06/1996 - Specialty: Cardiologist -  PrescriberID: 08555
+Annie Tremblay - Date of Birth: 06/06/1996 - Specialty: Cardiologist -  PrescriberID: 02090
