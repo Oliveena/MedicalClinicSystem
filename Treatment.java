@@ -35,14 +35,12 @@ public class Treatment implements Treatable {
         return treatmentID;
     }
 
-    public void setTreatmentType(boolean treatmentType) {
-//        if (treatmentType == true) {
-//            this.treatmentType = pharmaceutical;
-//        } else {
-//            this.treatmentType = nonPharmaceutical;
-//        }
-        // if pharmaceutical -> covered by insurance
-        // is not pharmaceutical, is not covered by insurance
+    public void setIsTreatmentType(boolean treatmentType) {
+        if (treatmentType == true) {
+            this.isTreatmentType = pharmaceutical;
+        } else {
+            
+        }
     }
 
     public Boolean getIsTreatmentType() {
@@ -103,6 +101,8 @@ public class Treatment implements Treatable {
     }
 
     /*
+    * public void performTreatment() {
+
         boolean prescribed = false;
 
         // ideas of treatments
@@ -118,7 +118,7 @@ public class Treatment implements Treatable {
         // performObstetricExamination() -> covered by insurance
         // signInsurancePapers() -> not covered by insurance
         // signAnAbsenceNote() -> not covered by insurance
-        // Referral to a different specialist (optional: have general practitioners refer pts to specialist listOfDoctors) -> free, not covered by insurance
+        // Referral to a different specialist (optional: have general practitioners refer pts to specialist doctors) -> free, not covered by insurance
         // OPTIONAL: referral to a nurse (e.g. wound care, counseling, vaccination, etc. -> free, not covered by insurance
     }*/
 }
