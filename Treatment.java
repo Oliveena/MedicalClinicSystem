@@ -1,23 +1,24 @@
 package MedicalClinicSystem;
 
-import MedicalClinicSystem.Date;
+import java.util.Random;
 
 public class Treatment implements Treatable {
 
+    Random random = new Random();
+
     /// fields members for Treatment class
-    private String TreatmentID;
+    private String treatmentID;
     private Boolean isTreatmentType;           // can be Pharmacological or Non Pharmacological
-    private MedicalClinicSystem.Date StartDate;
-    private MedicalClinicSystem.Date EndDate;
+    private Date StartDate;
+    private Date EndDate;
     private String PrescriberName;          // takes in first name, last name of a Dr
     private String PrescriberID;
     private Boolean coveredByInsurance;
     private Double cost;
 
     /// parametrized constructor for Treatment class
-    public Treatment(String treatmentID, String treatmentType, MedicalClinicSystem.Date startDate, MedicalClinicSystem.Date endDate, String prescriberName, String prescriberID, Boolean coveredByInsurance, Double cost) {
-        TreatmentID = treatmentID;
-        isTreatmentType = isTreatmentType;
+    public Treatment(String treatmentID, String treatmentType, Date startDate, Date endDate, String prescriberName, String prescriberID, Boolean coveredByInsurance, Double cost) {
+        this.treatmentID = treatmentID;
         StartDate = startDate;
         EndDate = endDate;
         PrescriberName = prescriberName;
@@ -25,37 +26,38 @@ public class Treatment implements Treatable {
         this.coveredByInsurance = coveredByInsurance;
         this.cost = cost;
     }
-    
-    public String getTreatmentID() {
-        return TreatmentID;
+
+    public void setTreatmentID(String firstname, String lastname) {
+        this.treatmentID = firstname.charAt(0) + lastname.charAt(0) + String.valueOf(random.nextInt(100000, 999999));
     }
 
-    public void setTreatmentID(String treatmentID) {
-        TreatmentID = treatmentID;
-        
-        // we can implement our "student ID" code from the past group project
-        // initials of prescribing Dr + initials of pt + pt DOB + 3 random numbers or something
-        
+    public String getTreatmentID() {
+        return treatmentID;
+    }
+
+    public void setTreatmentType(boolean treatmentType) {
+//        if (treatmentType == true) {
+//            this.treatmentType = pharmaceutical;
+//        } else {
+//            this.treatmentType = nonPharmaceutical;
+//        }
+        // if pharmaceutical -> covered by insurance
+        // is not pharmaceutical, is not covered by insurance
     }
 
     public Boolean getIsTreatmentType() {
         return isTreatmentType;
     }
 
-    public void setIsTreatmentType(boolean treatmentType) {
-        isTreatmentType = treatmentType;
-
-    }
-
-    public MedicalClinicSystem.Date getStartDate() {
+    public Date getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate(MedicalClinicSystem.Date startDate) {
+    public void setStartDate(Date startDate) {
         StartDate = startDate;
     }
 
-    public MedicalClinicSystem.Date getEndDate() {
+    public Date getEndDate() {
         return EndDate;
     }
 
@@ -101,8 +103,6 @@ public class Treatment implements Treatable {
     }
 
     /*
-    * public void performTreatment() {
-
         boolean prescribed = false;
 
         // ideas of treatments
@@ -118,7 +118,7 @@ public class Treatment implements Treatable {
         // performObstetricExamination() -> covered by insurance
         // signInsurancePapers() -> not covered by insurance
         // signAnAbsenceNote() -> not covered by insurance
-        // Referral to a different specialist (optional: have general practitioners refer pts to specialist doctors) -> free, not covered by insurance
+        // Referral to a different specialist (optional: have general practitioners refer pts to specialist listOfDoctors) -> free, not covered by insurance
         // OPTIONAL: referral to a nurse (e.g. wound care, counseling, vaccination, etc. -> free, not covered by insurance
     }*/
 }
