@@ -3,12 +3,14 @@ package MedicalClinicSystem;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Scanner;
 
-
+/// subclass of Person
 public class Receptionist extends Person implements Schedulable {
     Date date = new Date();
     private Scanner scanner = new Scanner(System.in);
+    //HashMap<Strin>
 
     /// made the default constructor private, bc we don't want the user to create new Receptionists (see Instructions end of page 8)
     private Receptionist() {
@@ -18,9 +20,9 @@ public class Receptionist extends Person implements Schedulable {
     //----------- https://beginnersbook.com/2014/01/how-to-append-to-a-file-in-java/ -------------------
     // TODO: addTreatment()
 
-    // method to add doctor
+    /// method to add a new doctor to the list of listOfDoctors associated with the clinic
     public void addDoctor() {
-        // Prompt user for inputs
+        // Prompting user for inputs
         System.out.print("Enter doctor's first name: ");
         String firstName = scanner.nextLine();
         System.out.print("Enter doctor's last name: ");
@@ -44,21 +46,24 @@ public class Receptionist extends Person implements Schedulable {
                 " - Specialty: " + doctor.getSpeciality() + " - Prescriber ID: " + doctor.getPrescriberID();
 
 
-        // add info into text file
-        try {
-            // constructs a FileWriter object which allow a file to be opened for writing by only one FileWriter
-            FileWriter fileWriter = new FileWriter("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt", true);       // boolean true: data will be appended to the end of the existing file (false: override)
-            PrintWriter printWriter = new PrintWriter(fileWriter);                                                                            // print into the same file
-            printWriter.write(doctorInfo);                                                                                                    // write into printWriter String doctorInfo
-            printWriter.close();                                                                                                              // close
-            System.out.println("Doctor added successfully!");
-        } catch (
-                IOException e) {                                                                                                             // throws exception when directory different than a regular file, does not exist but cannot be created, or cannot be open
-            System.out.println("Error: Unable to add doctor.");
+
+        public void writeToFile() {
+            /// adding user-entered data into text file
+            try {
+                // constructs a FileWriter object which allow a file to be opened for writing by only one FileWriter
+                FileWriter fileWriter = new FileWriter("C:\\Users\\anata\\Documents\\GitHub\\MedicalClinicSystem\\MedicalClinicSystem\\Doctor.txt", true);       // boolean true: data will be appended to the end of the existing file (false: override)
+                PrintWriter printWriter = new PrintWriter(fileWriter);                                                                            // print into the same file
+                printWriter.write(doctorInfo);                                                                                                    // write into printWriter String doctorInfo
+                printWriter.close();                                                                                                              // close
+                System.out.println("Doctor added successfully!");
+            } catch (
+                    IOException e) {                                                                                                             // throws exception when directory different than a regular file, does not exist but cannot be created, or cannot be open
+                System.out.println("Error: Unable to add doctor.");
+            }
         }
     }
 
-    // method to add patient
+    /// similar method to add patient
     public void addPatient() {
         // prompt user for input
         System.out.print("Enter patient's first name: ");
@@ -81,11 +86,11 @@ public class Receptionist extends Person implements Schedulable {
         // create patient object
         Patient patient = new Patient(firstName, lastName, gender, birthDate, patientID, patientAge);
         String patientInfo = "\n" + patient.getFirstName() + " " + patient.getLastName() + " - Gender: " + patient.getGender() + " - Date of Birth: " + patient.getDateOfBirth() +
-                " - Patient ID: " + patient.getPatientID() + " - Age: " + patient.getPatientAge();
+                " - Patient ID: " + patient.getPatientID() + " - Age: " + date.calculateAge();
 
         // add info into text file
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Patient.txt", true);
+            FileWriter fileWriter = new FileWriter("C:\\Users\\anata\\Documents\\GitHub\\MedicalClinicSystem\\MedicalClinicSystem\\Patient.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.write(patientInfo);
             printWriter.close();
@@ -95,11 +100,11 @@ public class Receptionist extends Person implements Schedulable {
         }
     }
 
-    // display the doctor list from Doctor.txt
+    /// displaying the doctor list from Doctor.txt
     public void doctorList() {
         System.out.println("Doctor list: ");
         try {
-            FileReader file = new FileReader("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt");
+            FileReader file = new FileReader("C:\\Users\\anata\\Documents\\GitHub\\MedicalClinicSystem\\MedicalClinicSystem\\Doctor.txt");
             Scanner fileScanner = new Scanner(file);
 
             while (fileScanner.hasNextLine()) {             // returns true if there is another line in the input of this scanner
@@ -112,11 +117,11 @@ public class Receptionist extends Person implements Schedulable {
         }
     }
 
-    // display the doctor list from Doctor.txt
+    /// displaying the patient list from Patient.txt
     public void patientList() {
         System.out.println("Patient list: ");
         try {
-            FileReader file = new FileReader("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Patient.txt");
+            FileReader file = new FileReader("C:\\Users\\anata\\Documents\\GitHub\\MedicalClinicSystem\\MedicalClinicSystem\\Patient.txt");
             Scanner fileScanner = new Scanner(file);
 
             while (fileScanner.hasNextLine()) {
@@ -132,6 +137,7 @@ public class Receptionist extends Person implements Schedulable {
     @Override
     public void scheduleAppointment() {
     }
+}
 
 
 }
