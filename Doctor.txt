@@ -1,8 +1,8 @@
-Genevieve Drapeau - Date of Birth: 06/06/1996 - Specialty: General Practitioner - PrescriberID: 02090
-My Linh Tu - Date of Birth: 06/06/1996 - Specialty: Obstetrician -  PrescriberID: 79552
-Nina Marie Benoit - Date of Birth: 06/06/1996 - Specialty: General Practitioner -  PrescriberID: 14318
-Anatole Nguegno - Date of Birth: 06/06/1996 - Specialty: Endocrinologist -  PrescriberID: 10002
-Gerald G Pearl - Date of Birth: 06/06/1996 - Specialty: General Surgery -  PrescriberID: 63321
-Tamara Yatsevska - Date of Birth: 06/06/1996 - Specialty: General Practitioner -  PrescriberID: 19460
-Jean-Francois - Date of Birth: 06/06/1996 - Specialty: Cardiologist -  PrescriberID: 08555
-Annie Tremblay - Date of Birth: 06/06/1996 - Specialty: Cardiologist -  PrescriberID: 02090
+Genevieve Drapeau - Date of Birth: 06/06/1996 - Gender: woman - Specialty: General Practitioner - PrescriberID: 02090
+My-Linh Tu - Date of Birth: 06/06/1996 - Gender: woman - Specialty: Obstetrician -  PrescriberID: 79552
+Nina Marie Benoit - Date of Birth: 06/06/1996 - Gender: woman - Specialty: General Practitioner -  PrescriberID: 14318
+Anatole Nguegno - Date of Birth: 06/06/1996 - Gender: man - Specialty: Endocrinologist -  PrescriberID: 10002
+Gerald J Pearl - Date of Birth: 06/06/1996 - Gender: man - Specialty: General Surgery -  PrescriberID: 63321
+Tamara Yatsevska - Date of Birth: 06/06/1996 - Gender: woman - Specialty: General Practitioner -  PrescriberID: 19460
+Jean-Francois Tremblay - Date of Birth: 06/06/1996 - Gender: man - Specialty: Cardiologist -  PrescriberID: 08555
+Annie Tremblay - Date of Birth: 06/06/1996 - Gender: woman - Specialty: Cardiologist -  PrescriberID: 02090

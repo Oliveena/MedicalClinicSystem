@@ -1,60 +1,27 @@
-package MCS;
+package MedicalClinicSystem;
 
 import java.time.LocalDate;
-import java.util.Date;
+import MedicalClinicSystem.Date;
 
 public abstract class Person {
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
     // Address
     // Phone No
     // Email
 
-    public Person(){
+    /// default constructor for Person class
+    public Person () {
+    }
+
+    /// parametrized constructor for Person class
+    public Person(LocalDate dateOfBirth, String firstName, String lastName, String gender) {
         this.firstName = "FirstName";
         this.lastName = "LastName";
-        this.dateOfBirth = new Date();
+        this.dateOfBirth = dateOfBirth;
         this.gender = "Gender";
-    }
-
-    public Person(String firstName, String lastName, LocalDate dateOfBirth){
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName, MCS.Date dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = new Date();
-        this.gender = gender;
-    }
-
-    public void displayPerson(){
-        System.out.println("Person : " + firstName + " " + lastName);
-        System.out.println("Date of Birth : " + dateOfBirth);
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public void setFirstName(String firstName) {
@@ -75,8 +42,33 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        setDateOfBirth(dateOfBirth);
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void displayPerson(){
+        System.out.println("Person : " + firstName + " " + lastName);
+        System.out.println("Date of Birth : " + dateOfBirth);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package MCS;
+package MedicalClinicSystem;
 
 import java.time.LocalDate;
 
@@ -7,18 +7,10 @@ public class Doctor extends Person {
     /// fields specific to Doctor class
     private String speciality;
     private String prescriberID;
-        // is a number 12345678
 
-    /**
-     * parametrized constructor
-     * @param firstName
-     * @param lastName
-     * @param dateOfBirth
-     * @param speciality
-     * @param prescriberID
-     */
-    public Doctor(String firstName, String lastName, LocalDate dateOfBirth, String speciality, String prescriberID) {
-        super(firstName, lastName, dateOfBirth);
+    /// parametrized constructor for Doctor class
+    public Doctor(String firstName, String lastName, LocalDate dateOfBirth, String gender, String speciality, String prescriberID) {
+        super(dateOfBirth, firstName, lastName, gender);
         this.speciality = speciality;
         this.prescriberID = prescriberID;
     }
@@ -67,6 +59,7 @@ public class Doctor extends Person {
 //        bill += 200;
 //    }
 //
+//  /// OPTIONAL: restrict performObstetricExamination() to Doctors who are Obstetricians only
 //    public void performObstetricExamination() {
 //        bill += 950;
 //    }

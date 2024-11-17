@@ -1,5 +1,8 @@
-package MCS;
+package MedicalClinicSystem;
 
+import MedicalClinicSystem.Date;
+
+import java.time.LocalDate;
 import java.util.Random;
 
 public class Patient extends Person implements Treatable{
@@ -7,26 +10,18 @@ public class Patient extends Person implements Treatable{
     Random random = new Random();
     Date date = new Date();
 
-    private String firstName, lastName;
-    //private Date dateOfBirth;
-    private String medicalHistory, insuranceCie;
-    private String patientID;
+    private String patientID, medicalHistory, insuranceCie;
     private int patientAge;
 
     public Patient(){
     super();
+    patientID = "0";
     this.medicalHistory = "No medical history";
     this.insuranceCie = "No insurance cie";
-    patientID = "0";
     }
 
-    public Patient(String firstName, String lastName) {
-        super(firstName, lastName);
-    }
-
-
-    public Patient(String firstName, String lastName, String medicalHistory, String insuranceCie) {
-        super(firstName, lastName);
+    public Patient(String firstName, String lastName, String gender, LocalDate dateOfBirth, String patientID, int patientAge ) {
+        super(dateOfBirth, firstName, lastName, gender);
         this.medicalHistory = medicalHistory;
         this.insuranceCie = insuranceCie;
     }
@@ -34,18 +29,18 @@ public class Patient extends Person implements Treatable{
     public void performTreatment(){
 
         boolean accepted = false;
-
     }
+
     public void displayPatient(){
-        System.out.println("Patient : " + firstName + " " + lastName);
-        //System.out.println("Date of Birth : " + dateOfBirth);
+        System.out.println("Patient : " + getFirstName() + " " + getLastName());
+        System.out.println("Date of Birth : " + getDateOfBirth());
         System.out.println("Medical History : " + medicalHistory);
         System.out.println("Insurance Cie : " + insuranceCie);
         System.out.println("Patient ID : " + patientID);
     }
 
     public void displayPatientBday(){
-        System.out.println("Patient : " + firstName + " " + lastName);
+        System.out.println("Patient : " + getFirstName() + " " + getLastName());
         //System.out.println("Date of Birth : " + dateOfBirth);
         System.out.println("Medical History : " + medicalHistory);
         System.out.println("Insurance Cie : " + insuranceCie);

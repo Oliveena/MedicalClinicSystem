@@ -1,17 +1,18 @@
-package MCS;
+package MedicalClinicSystem;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
 public class Receptionist extends Person implements Schedulable {
-    LocalDate startDateAtClinic;
-    LocalDate dateOfBirth;
+    Date date = new Date();
     private Scanner scanner = new Scanner(System.in);
 
-    public Receptionist() {}
-
+    /// made the default constructor private, bc we don't want the user to create new Receptionists (see Instructions end of page 8)
+    private Receptionist() {
+    }
 
     // REQUIREMENT 11: SAVE AND LOAD INFORMATION ABOUT DOCTORS, PATIENTS, AND TREATMENT TO/FROM A FILE
     //----------- https://beginnersbook.com/2014/01/how-to-append-to-a-file-in-java/ -------------------
@@ -19,66 +20,73 @@ public class Receptionist extends Person implements Schedulable {
 
     // method to add doctor
     public void addDoctor() {
-        // Collecting doctor details from the user
+        // Prompt user for inputs
         System.out.print("Enter doctor's first name: ");
         String firstName = scanner.nextLine();
         System.out.print("Enter doctor's last name: ");
         String lastName = scanner.nextLine();
 
+        System.out.println("Enter doctor's date of birth (dd/MM/yyyy): ");
+        String dateOfBirth = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate birthDate = LocalDate.parse(dateOfBirth, formatter);
 
+        System.out.println("Enter doctor's gender: ");
+        String gender = scanner.nextLine();
         System.out.print("Enter doctor's specialty: ");
-        String specialty = scanner.nextLine();
+        String speciality = scanner.nextLine();
         System.out.print("Enter doctor's prescriber ID: ");
         String prescriberID = scanner.nextLine();
 
-        // Creating a Doctor object
-        //TODO: need to fix dateOfBirth and startDateAtClinic
-        Doctor doctor = new Doctor(firstName, lastName, dateOfBirth, startDateAtClinic, specialty, prescriberID);
 
-        // Writing the doctor information to Doctor.txt
-        String doctorInfo = "\n" + doctor.getFirstName() + " " + doctor.getLastName()+
+        Doctor doctor = new Doctor(firstName, lastName, birthDate, gender, speciality, prescriberID);
+        String doctorInfo = "\n" + doctor.getFirstName() + " " + doctor.getLastName() + " - Date of Birth: " + doctor.getDateOfBirth() + " - Gender: " + gender +
                 " - Specialty: " + doctor.getSpeciality() + " - Prescriber ID: " + doctor.getPrescriberID();
 
+
+        // add info into text file
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt", true);
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-            PrintWriter printWriter = new PrintWriter(writer);
-            printWriter.write(doctorInfo);
-            printWriter.close();
+            // constructs a FileWriter object which allow a file to be opened for writing by only one FileWriter
+            FileWriter fileWriter = new FileWriter("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt", true);       // boolean true: data will be appended to the end of the existing file (false: override)
+            PrintWriter printWriter = new PrintWriter(fileWriter);                                                                            // print into the same file
+            printWriter.write(doctorInfo);                                                                                                    // write into printWriter String doctorInfo
+            printWriter.close();                                                                                                              // close
             System.out.println("Doctor added successfully!");
-        } catch (IOException e) {
+        } catch (
+                IOException e) {                                                                                                             // throws exception when directory different than a regular file, does not exist but cannot be created, or cannot be open
             System.out.println("Error: Unable to add doctor.");
         }
     }
 
-
     // method to add patient
     public void addPatient() {
-        // Collecting patient details from the user
+        // prompt user for input
         System.out.print("Enter patient's first name: ");
         String firstName = scanner.nextLine();
         System.out.print("Enter patient's last name: ");
         String lastName = scanner.nextLine();
+        System.out.print("Enter patient's gender: ");
+        String gender = scanner.nextLine();
 
+        System.out.println("Enter patient's date of birth (dd/MM/yyyy): ");
+        String dateOfBirth = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.print("Enter patient's medical history: ");
-        String medicalHistory = scanner.nextLine();
-        System.out.print("Enter patient's insurance company: ");
-        String insuranceCie = scanner.nextLine();
+        LocalDate birthDate = LocalDate.parse(dateOfBirth, formatter);
+        System.out.print("Enter patient's ID: ");
+        String patientID = scanner.nextLine();
+        System.out.print("Enter patient's age: ");
+        int patientAge = scanner.nextInt();
 
-        // Creating a Patient object
-        Patient patient = new Patient(firstName, lastName, medicalHistory, insuranceCie);
-        patient.setPatientID(firstName, lastName);
+        // create patient object
+        Patient patient = new Patient(firstName, lastName, gender, birthDate, patientID, patientAge);
+        String patientInfo = "\n" + patient.getFirstName() + " " + patient.getLastName() + " - Gender: " + patient.getGender() + " - Date of Birth: " + patient.getDateOfBirth() +
+                " - Patient ID: " + patient.getPatientID() + " - Age: " + patient.getPatientAge();
 
-        // Writing the patient information to Patient.txt
-        String patientInfo = "\n" + patient.getFirstName() + " " + patient.getLastName() +
-                " - Medical History: " + patient.getMedicalHistory() + " - Insurance Company: " + patient.getInsuranceCie() +
-                " - Patient ID: " + patient.getPatientID();
-
+        // add info into text file
         try {
             FileWriter fileWriter = new FileWriter("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Patient.txt", true);
-            BufferedWriter writer = new BufferedWriter(fileWriter);
-            PrintWriter printWriter = new PrintWriter(writer);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.write(patientInfo);
             printWriter.close();
             System.out.println("Patient added successfully!");
@@ -87,29 +95,28 @@ public class Receptionist extends Person implements Schedulable {
         }
     }
 
-
-    // Method to display the doctor list from Doctor.txt
+    // display the doctor list from Doctor.txt
     public void doctorList() {
         System.out.println("Doctor list: ");
         try {
-            File file = new File("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt");
+            FileReader file = new FileReader("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Doctor.txt");
             Scanner fileScanner = new Scanner(file);
 
-            while (fileScanner.hasNextLine()) {
-                System.out.println(fileScanner.nextLine());
+            while (fileScanner.hasNextLine()) {             // returns true if there is another line in the input of this scanner
+                System.out.println(fileScanner.nextLine()); // print out that line
             }
 
-            fileScanner.close();
-        } catch (FileNotFoundException e) {
+            fileScanner.close();                            // close when loop is done
+        } catch (FileNotFoundException e) {                 // if no line found, catch exception
             System.out.println("Error: Doctor list file not found.");
         }
     }
 
-    // Method to display the doctor list from Doctor.txt
+    // display the doctor list from Doctor.txt
     public void patientList() {
         System.out.println("Patient list: ");
         try {
-            File file = new File("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Patient.txt");
+            FileReader file = new FileReader("C:\\Users\\trang_n1u0jzy\\IdeaProjects\\MCS\\MCS\\Patient.txt");
             Scanner fileScanner = new Scanner(file);
 
             while (fileScanner.hasNextLine()) {
@@ -122,43 +129,9 @@ public class Receptionist extends Person implements Schedulable {
         }
     }
 
-
-    // TEMPORARY MENU TO TEST RECEPTIONIST
-    // TODO: ENUM MENU
-    public void displayMenu() {
-        while (true) {
-            System.out.println("\n===== Receptionist Menu =====");
-            System.out.println("1. Add a new Doctor");
-            System.out.println("2. Add a new Patient");
-            System.out.println("3. View Doctor List");
-            System.out.println("4. View Patient List");
-            System.out.print("Enter your choice: ");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (choice) {
-                case 1:
-                    addDoctor();
-                    break;
-                case 2:
-                    addPatient();
-                    break;
-                case 3:
-                    doctorList();
-                    break;
-                case 4:
-                    patientList();
-                    break;
-                default:
-                    System.out.println("Invalid choice, please try again.");
-            }
-        }
-    }
-
-
     @Override
     public void scheduleAppointment() {
-
     }
+
+
 }

@@ -1,4 +1,4 @@
-package MCS;
+package MedicalClinicSystem;
 
 public interface Schedulable {
 
