@@ -1,87 +1,90 @@
 package MedicalClinicSystem;
 
+import java.time.LocalDate;
 import MedicalClinicSystem.Date;
 
-import java.time.LocalDate;
-import java.util.Random;
+/// class Person is the superclass of classes Patient, Doctor and Receptionist
+public abstract class Person {
 
-public class Patient extends Person implements Treatable{
+    /// declaring fields reserved to superclass Person
+    private String firstName;
+    private String lastName;
+    private LocalDate dateOfBirth;
+    private String gender;
+    // Address
+    // Phone No
+    // Email
 
-    Random random = new Random();
-    Date date = new Date();
-
-    private String patientID, medicalHistory, insuranceCie;
-    private int patientAge;
-
-    public Patient(){
-    super();
-    patientID = "0";
-    this.medicalHistory = "No medical history";
-    this.insuranceCie = "No insurance cie";
+    /// default constructor for Person class
+    public Person () {
     }
 
-    public Patient(String firstName, String lastName, String gender, LocalDate dateOfBirth, String patientID, int patientAge ) {
-        super(dateOfBirth, firstName, lastName, gender);
-        this.medicalHistory = medicalHistory;
-        this.insuranceCie = insuranceCie;
+    /// parametrized constructor for Person class
+    public Person(LocalDate dateOfBirth, String firstName, String lastName, String gender) {
+        this.firstName = "FirstName";
+        this.lastName = "LastName";
+        this.dateOfBirth = dateOfBirth;
+        this.gender = "Gender";
     }
 
-    public void performTreatment(){
+//    public Person(String firstName, String lastName) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//    }
 
-        boolean accepted = false;
+    public void setFirstName(String firstName) {
+        if (firstName.isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be empty");
+        } else if (firstName.length() > 30) {
+            throw new IllegalArgumentException("Wow! Long name! First name cannot be longer than 30 characters");
+        }
+        this.firstName = firstName;
     }
 
-    public void displayPatient(){
-        System.out.println("Patient : " + getFirstName() + " " + getLastName());
-        System.out.println("Date of Birth : " + getDateOfBirth());
-        System.out.println("Medical History : " + medicalHistory);
-        System.out.println("Insurance Cie : " + insuranceCie);
-        System.out.println("Patient ID : " + patientID);
+    public void setLastName(String lastName) {
+        if (lastName.isEmpty()) {
+            throw new IllegalArgumentException("First name cannot be empty");
+        } else if (lastName.length() > 30) {
+            throw new IllegalArgumentException("Wow! Long name! First name cannot be longer than 30 characters");
+        }
+        this.lastName = lastName;
     }
 
-    public void displayPatientBday(){
-        System.out.println("Patient : " + getFirstName() + " " + getLastName());
-        //System.out.println("Date of Birth : " + dateOfBirth);
-        System.out.println("Medical History : " + medicalHistory);
-        System.out.println("Insurance Cie : " + insuranceCie);
-        System.out.println("Patient ID : " + patientID);
-//        System.out.println("Bday : " + );
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        setDateOfBirth(dateOfBirth);
     }
 
-    public void setAge(){
-        this.patientAge = date.calculateAge();
+    public void setGender(String gender) {
+
+        this.gender = gender;
+    }
+    // OPTIONAL: woman, man, X
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setMedicalHistory(String medicalHistory){
-        this.medicalHistory = medicalHistory;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setInsuranceCie(String insuranceCie){
-        this.insuranceCie = insuranceCie;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setPatientID(String firstname, String lastname){
-        this.patientID = firstname.charAt(0) + lastname.charAt(0) + String.valueOf(random.nextInt(100000, 999999));
+    public String getGender() {
+        return gender;
     }
 
-    public String getMedicalHistory(){
-        return "Medical History for " + getFirstName() + " " + getLastName();
+    public void displayPerson(){
+        System.out.println("Person : " + firstName + " " + lastName);
+        System.out.println("Date of Birth : " + dateOfBirth);
     }
 
-    public String getInsuranceCie(){
-        return "Insurance company for " + getFirstName() + " " + getLastName() + " is " + insuranceCie;
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " " + dateOfBirth + " " + gender;
     }
 
-    public String getPatientID(){
-        return patientID;
-    }
-
-    public int getPatientAge(){
-        return patientAge;
-    }
-
-
-
-
-
+    public String fullNametoString() {return firstName + " " + lastName;}
 }
