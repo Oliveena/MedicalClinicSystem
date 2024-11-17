@@ -14,24 +14,22 @@ import static MedicalClinicSystem.MainA.scanner;
         private LocalDate appointmentDate;
         private LocalDate startOfTreatment;
         private LocalDate endOfTreatment;
-        private int age, day, month, year;
+        // to eliminate those below
+
 
         /// non-parametrized constructor
         public Date(){
         }
 
         /// parametrized constructor for fields of Date
-        public Date(LocalDate dateOfBirth, int age, LocalDate startDate, int yearsOfExperience, LocalDate appointmentDate, LocalDate startOfTreatment, LocalDate endOfTreatment,  int day, int month, int year) {
+        public Date(LocalDate dateOfBirth, LocalDate startDate, int yearsOfExperience, LocalDate appointmentDate, LocalDate startOfTreatment, LocalDate endOfTreatment,  int day, int month, int year) {
             this.dateOfBirth = dateOfBirth;
-            this.age = age;
             this.startDate = startDate;
             this.yearsOfExperience = yearsOfExperience;
             this.appointmentDate = appointmentDate;
             this.startOfTreatment = startOfTreatment;
             this.endOfTreatment = endOfTreatment;
-            this.day = day;
-            this.month = month;
-            this.year = year;
+
         }
 
         /// method for displaying month options
@@ -53,7 +51,8 @@ import static MedicalClinicSystem.MainA.scanner;
         }
 
         /// setter for date of birth (split into Day, Month and Year)
-        public void setDateOfBirth() {
+        public void setDate() {
+            int age, day, month, year;
             boolean validDay = false;
             System.out.println("Enter your Year of Birth: ");
             year = scanner.nextInt();
@@ -106,20 +105,21 @@ import static MedicalClinicSystem.MainA.scanner;
             return dateOfBirth;
         }
 
+        /*
         /// getter method for Year
-        public int getYear(){
+        //public int getYear(){
             return year;
         }
 
         /// getter method for Month
-        public int getMonth(){
+        //public int getMonth(){
             return month;
         }
 
         /// getter method for Day
         public int getDay(){
             return day;
-        }
+        }*/
 
         /// method for calculating age, where (age) = (current date) - (dateOfBirth)
         public int calculateAge() {
@@ -139,9 +139,7 @@ import static MedicalClinicSystem.MainA.scanner;
         }
 
         /// getter for age (in years)
-        public int getAge() {
-            return age;
-        }
+
 
         /// getter for the entire dateOfBirth date
         public String getdateOfBirth() {
@@ -149,9 +147,7 @@ import static MedicalClinicSystem.MainA.scanner;
         }
 
         /// method to print out the dateOfBirth as specific elements of year, month, day as a String
-        public String printdateOfBirth() {
-            return String.format("%02d/%02d/%d", day, month, year);
-        }
+
 
         /// setter for an Employee`s start date at the clinic
         public void setStartDate(LocalDate startDate) {
