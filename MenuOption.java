@@ -1,14 +1,16 @@
 package MedicalClinicSystem;
-// TEMPORARY MENU TO TEST RECEPTIONIST
 
 public enum MenuOption {
+
+    /// declaring enumeration constants
     ADD_DOCTOR(1, "Add a new Doctor"),
     VIEW_DOCTOR_DETAILS(2, "View Doctor List"),
     ADD_PATIENT(3, "Add a new Patient"),
     VIEW_PATIENT_DETAILS(4, "View Patient List"),
     ADD_TREATMENT(5, "Add Treatment List"),
     VIEW_TREATMENT_DETAILS(6, "View Treatment List"),
-    EXIT(7, "Exit");
+    ADD_APPOINTMENT(7, "Add Appointment"),
+    EXIT(8, "Exit");
 
     /// variables of the enum menu
     private int value;
@@ -18,6 +20,14 @@ public enum MenuOption {
     MenuOption(int userChoice, String menuItemDescription) {
         this.value = userChoice;
         this.description = menuItemDescription;
+    }
+
+    public void setValue(int value){
+        this.value = value;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 
     /// getters for enum
@@ -41,4 +51,3 @@ public enum MenuOption {
         return null;
     }
 }
-
